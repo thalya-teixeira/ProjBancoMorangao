@@ -1,1 +1,0 @@
-11;Conta Física;Agência: ;Nome: th;Telefone: 232;Data de Nascimento: 23/10/1997 00:00:00;CPF: 232;Renda: R$232;Estudante: s;IdPessoa: 11;Logradouro: fgdfgnNúmero: gfdfg;Complemento: fgdfg;Bairro: dfgfg;CEP: fgg;Cidade: dfg;Estado: dfg;

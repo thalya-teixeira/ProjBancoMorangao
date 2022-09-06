@@ -9,6 +9,17 @@ namespace ProjBancoMorangao
         {
             do
             {
+                Console.WriteLine("\n\tDENTRE AS OPÇÕES NO MENU, QUAL DESEJA EXECUTAR?\n");
+                Console.WriteLine("\t|°°°°°°°°°°°°°°°°°°°°°°  MENU  °°°°°°°°°°°°°°°°°°°°°°°°|");
+                Console.WriteLine("\t|                                                      |");
+                Console.WriteLine("\t|   opção 1 : Cadastrar Pessoa Fisícia                 |");
+                Console.WriteLine("\t|   opção 2 : Cadastrar Pessoa Jurídic                 |");
+                Console.WriteLine("\t|   opção 3 : Solicitar Conta                          |");
+                Console.WriteLine("\t|   opção 4 : Solicitar Conta                          |");
+                Console.WriteLine("\t|   opção 5 : Solicitar Conta                          |");
+                Console.WriteLine("\t|   opção 5 : Solicitar Conta                          |");
+                Console.WriteLine("\t|   opção 5 : Solicitar Conta                          |");
+                Console.WriteLine("\t|______________________________________________________|");
                 Console.Clear();
                 Console.WriteLine(">>>>> MENU <<<<<");
                 Console.WriteLine("1- Cadastrar Pessoa Fisíca");
@@ -19,9 +30,9 @@ namespace ProjBancoMorangao
         static void Main(string[] args)
         {
            
-            ClientePF pf = new ClientePF();
-            pf.SolicitarAberturaPF();
-            pf.ToString();
+            ClientePF pessoapf = new ClientePF();
+            pessoapf.SolicitarAberturaPF();
+            //pessoapf.ToString();
 
             //ClientePJ pj = new ClientePJ();
             //pj.SolicitarAberturaPJ();

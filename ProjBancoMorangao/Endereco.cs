@@ -21,17 +21,29 @@ namespace ProjBancoMorangao
         {
             
         }
+        
+        public Endereco(string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado)
+        {
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            CEP = cep;
+            Cidade = cidade;
+            Estado = estado;
+        }
+
         public override string ToString()
         {
-            return "IdPessoa: " + IdPessoa + ";Logradouro: " + Logradouro + "nNúmero: " + Numero + ";Complemento: " + Complemento +
+            return "Logradouro: " + Logradouro + ";Número: " + Numero + ";Complemento: " + Complemento +
               ";Bairro: " + Bairro + ";CEP: " + CEP + ";Cidade: " + Cidade + ";Estado: " + Estado + ";";
         }
-        /*
+
         public string DadosEnd()
         {
             return $"{Logradouro};{Numero};{Complemento};{Bairro};{CEP};{Cidade};{Estado};";
         }
-        */
+
         //cadastrar endereço dos clientes
         public string CadastrarEndereco(int idPessoa)
         {

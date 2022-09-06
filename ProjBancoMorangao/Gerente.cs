@@ -70,7 +70,20 @@ namespace ProjBancoMorangao
             //condição para abrir o tipo de conta solicitado pelo atendente
             if (ler.Contains('s'))
             {
-                if(solicitacaoList.Contains("Tipo de conta: Conta Universitária"))
+                System.IO.StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\AguarAprov\\{solicitacoes.First()}");
+                arqId.WriteLine($"{solicita[0]}0;");
+                arqId.Close();
+                File.Move($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\AguarAprov\\{solicitacoes.First()}",
+                            $"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco\\{solicitacoes.First()}");
+            }
+            else
+                return;
+        }
+
+    }
+}
+/*
+ *if(solicitacaoList.Contains("Tipo de conta: Conta Universitária"))
                 {
                     Console.WriteLine("Conta Universitária criada com sucesso!");
                 }
@@ -81,14 +94,4 @@ namespace ProjBancoMorangao
                 else
                 {
                     Console.WriteLine("Conta VIP criada com sucesso!");
-                }
-            }
-
-        }
-
-
-
-
-
-    }
-}
+                }*/

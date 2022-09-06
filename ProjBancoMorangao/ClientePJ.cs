@@ -16,28 +16,51 @@ namespace ProjBancoMorangao
         //protected Endereco endereco { get; set; }
 
         //conta
+
         public ClientePJ()
         {
 
         }
 
+        public ClientePJ(int id, string agencia, string nome, string telefone, DateTime data, string razao, string cnpj, float renda)
+        {
+            IdPessoa = id;
+            Agencia = agencia;
+            Nome = nome;
+            Telefone = telefone;
+            Data = data;
+            RazaoSocial = razao;
+            CNPJ = cnpj;
+            Renda = renda;
+        }
+
         public override string ToString()
         {
-            return IdPessoa + ";Conta Jurídica;Agência: " + Agencia + ";Telefone: " + Telefone + ";Data de Abertura: " + Data  + ";Razão Social: " + RazaoSocial +
-                 ";CNPJ: " + CNPJ + ";Renda: " + Renda + ";";
+            return IdPessoa + ";Conta Jurídica;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Abertura CNPJ: " + Data.ToShortDateString() + ";Razão Social: " + RazaoSocial +
+                ";CNPJ: " + CNPJ + ";Renda: " + Renda + ";";
         }
-        public string DadosPJ()
+
+        private string DadosClientePJ()
         {
-            return $"{IdPessoa};{Nome};{Telefone};{Data};{RazaoSocial};{CNPJ};{Renda};";
+            return $"{IdPessoa};Conta Jurídica;{Agencia};{Nome};{Telefone};{Data.ToShortDateString()};{CNPJ};{RazaoSocial};{Renda};";
         }
 
 
         public string CadastraPJ(int id)
         {
             Console.WriteLine("***************************** BANCO MORANGÃO ********************************\n");
-            Console.WriteLine("********** SOLICITAÇÃO DE ABERTURA DE CONTA PESSOA JURÍDICA **********\n");
+            Console.WriteLine("************* SOLICITAÇÃO DE ABERTURA DE CONTA PESSOA JURÍDICA **************\n");
 
             IdPessoa = id;
+
+            Console.WriteLine("Digite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
+            Agencia = Console.ReadLine();
+
+            Console.WriteLine("Informe o nome da sua empresa: ");
+            Nome = Console.ReadLine();
+
+            Console.Write("Digite o telefone: ");
+            Telefone = Console.ReadLine();
 
             Console.Write("Informe a Razão Social: ");
             RazaoSocial = Console.ReadLine();
@@ -48,15 +71,18 @@ namespace ProjBancoMorangao
             Console.Write("Informe o seu CNPJ: ");
             CNPJ = Console.ReadLine();
 
-            return ToString();
+            Console.Write("Informe sua renda: R$");
+            Renda = float.Parse(Console.ReadLine());
+
+            return DadosClientePJ();
         }
 
         public void SolicitarAberturaPJ()
         {
             int id = getIdPessoa();
 
-            ClientePJ pj = new();
-            string cadastrapj = pj.CadastraPJ(id);
+            //ClientePJ pj = new ClientePJ();
+            string cadastrapj = CadastraPJ(id);
 
             Endereco end = new();
             //criando uma variael que irá armazenar dentro dessa variavel o retorno

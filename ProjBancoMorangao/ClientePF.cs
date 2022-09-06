@@ -11,9 +11,9 @@ namespace ProjBancoMorangao
     {
         private string CPF { get; set; }
         protected float Renda { get; set; }
-        protected char Estudante { get; set; }
+        protected string Estudante { get; set; }
         public string RA { get; set; }
-        
+
         //conta
 
         public ClientePF()
@@ -21,10 +21,27 @@ namespace ProjBancoMorangao
 
         }
 
+        public ClientePF(int id, string nome, string agencia, string telefone, DateTime data, string cpf, float renda, string estudante)
+        {
+            IdPessoa = id;
+            Agencia = agencia;
+            Nome = nome;
+            Telefone = telefone;
+            Data = data;
+            CPF = cpf;
+            Renda = renda;
+            Estudante = estudante;
+        }
+
         public override string ToString()
         {
-            return IdPessoa + ";Conta Física;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Nascimento: " + Data + ";CPF: " + CPF +
-                ";Renda: R$" + Renda + ";Estudante: " + Estudante + ";";
+            return IdPessoa + ";Conta Física;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Nascimento: " + Data.ToShortDateString() + ";CPF: " + CPF +
+                 ";Renda: R$" + Renda + ";Estudante: " + Estudante + ";";
+        }
+
+        private string DadosClientePF()
+        {
+            return $"{IdPessoa};Conta Física;{Agencia};{Nome};{Telefone};{Data.ToShortDateString()};{CPF};{Renda};{Estudante};";
         }
 
         public string CadastrarPF(int id)
@@ -32,7 +49,10 @@ namespace ProjBancoMorangao
             Console.WriteLine("***************************** BANCO MORANGÃO ********************************\n");
             Console.WriteLine("********** SOLICITAÇÃO DE ABERTURA DE CONTA CADASTRO PESSOA FÍSICA **********\n");
 
-           IdPessoa = id;
+            IdPessoa = id;
+
+            Console.WriteLine("Digite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
+            Agencia = Console.ReadLine();
 
             Console.Write("Informe o seu nome completo: ");
             Nome = Console.ReadLine();
@@ -49,18 +69,14 @@ namespace ProjBancoMorangao
             Console.Write("Informe a sua renda: R$");
             Renda = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("Você é um estudante? S/N");
-            Estudante = char.Parse(Console.ReadLine().ToLower().Trim()); //letra minuscula e sem espaço
+            Console.Write("Estudante? S/N: ");
+            string estudante = Console.ReadLine().ToLower().Trim();
+            if (estudante == "s")
+                Estudante = "s";
+            else
+                Estudante = "s";
 
-            if (Estudante == 's')
-            {
-                Console.WriteLine("Informe o seu RA: ");
-                RA = Console.ReadLine();
-                Estudante = 's';
-            }                
-            else Estudante = 'n';
-
-            return ToString();
+            return DadosClientePF();
         }
 
         public void SolicitarAberturaPF()

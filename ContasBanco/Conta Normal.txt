@@ -1,0 +1,1 @@
+7;Conta Física;Agência: ;Nome: thalya;Telefone: 5648;Data de Nascimento: 25/10/1997 00:00:00;CPF: 15486;Renda: R$0;Estudante: s;Tipo de conta: Conta Normal;0;
