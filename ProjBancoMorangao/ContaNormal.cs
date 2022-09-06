@@ -13,9 +13,9 @@ namespace ProjBancoMorangao
         {
         
             //Busca o arquivo que tem o CPF/CNPJ recebido como parâmetro
-            DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\ContasBanco");
+            DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco");
             var arq = dir.GetFiles($"{cpfCnpj}.*");
-            string[] solicita = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
+            string[] solicita = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
             string[] dados = new string[18];
             foreach (string dado in solicita)
                 dados = dado.Split(';');

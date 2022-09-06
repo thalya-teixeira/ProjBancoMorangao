@@ -43,7 +43,13 @@ namespace ProjBancoMorangao
 
             Gerente geren = new();
             geren.AprovaConta();
+            
 
+            CCUniversitaria cc = new CCUniversitaria("33899767800");
+            cc.SolicitaEmprestimo("33899767800");
+
+            Gerente gerente = new Gerente();
+            gerente.AprovaEmprest();
         }
     }
 }
