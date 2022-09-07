@@ -25,7 +25,7 @@ namespace ProjBancoMorangao
        public void Depositar (float valor, string cpfCnpj)
         {
             //busca o arquivo com os dados do solicitante
-            DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\ProjBancoMorangao\\ContasBanco");
+            DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco");
             var arq = dir.GetFiles($"{cpfCnpj}.*");
             string[] conta = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
             string[] dados = new string[18];
@@ -107,6 +107,63 @@ namespace ProjBancoMorangao
                 Console.WriteLine("Solicitação cancelada!");
             }
 
+        }
+
+        protected void AddExtrato(string cpfCnpj, string extrato)
+        {
+            string caminho = $"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\Extrato\\{cpfCnpj}.txt";
+
+            string texto = $"{extrato}\n";
+
+            File.AppendAllText(caminho, texto);
+        }
+
+        public void GetExtrato(string cpfCnpj)
+        {
+            FileStream fs = File.OpenRead($"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\Extrato\\{cpfCnpj}.txt");
+
+            byte[] b = new byte[1024];
+            UTF8Encoding temp = new UTF8Encoding();
+
+            Console.WriteLine("\t°°°°°°°°°°°°°     EXTRATO DA CONTA     °°°°°°°°°°°°°°°°");
+            Console.WriteLine($"CPF/CNPJ: {DadoCliente}");
+
+            while(fs.Read(b, 0, b.Length) > 0)
+            {
+                Console.WriteLine(temp.GetString(b));
+            }
+            Console.WriteLine("\t°°°°°°°°°°°°  SOLICITAÇÃO PESSOA FISÍCA  °°°°°°°°°°°°°°°");
+
+            Console.WriteLine("\t°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+            Console.WriteLine($"\t\nSALDO ATUAL DA CONTA: R${Saldo:N2}");
+            Console.WriteLine("\t°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+        }
+
+        protected int MenuCaixaEletronico()
+        {
+            int opc;
+            do
+            {
+                Console.WriteLine("\t|°°°°°°°°°°°°°  MENU CAIXA ELETRÔNICO  °°°°°°°°°°°°°°°°|");
+                Console.WriteLine("\t|                                                      |");
+                Console.WriteLine("\t|   opção 1 : Realizar Saque                           |");
+                Console.WriteLine("\t|   opção 2 : Realizar Depósito                        |");
+                Console.WriteLine("\t|   opção 3 : Realizar Transferências                  |");
+                Console.WriteLine("\t|   opção 4 : Realizar Pagamentos                      |");
+                Console.WriteLine("\t|   opção 5 : Consultar Extrato                        |");
+                Console.WriteLine("\t|   opção 6 : Solicitar Empréstimo                     |");
+                Console.WriteLine("\t|                                                      |");
+                Console.WriteLine("\t|   opção 0 : Sair                                     |");
+                Console.WriteLine("\t|______________________________________________________|");
+                Console.WriteLine("Opção: ");
+
+                opc = int.Parse(Console.ReadLine());
+                return opc;
+
+            } while (opc != 0);
+
+            Console.WriteLine("\tOBRIGADO! VOLTE SEMPRE");
+            return 0;
         }
     }
 }

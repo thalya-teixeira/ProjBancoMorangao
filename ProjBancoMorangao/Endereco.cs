@@ -48,25 +48,25 @@ namespace ProjBancoMorangao
         public string CadastrarEndereco(int idPessoa)
         {
             IdPessoa = idPessoa;
-            Console.Write("Informe o seu logradouro(rua): ");
+            Console.Write("\tInforme o seu logradouro(rua): ");
             Logradouro = Console.ReadLine();
             
-            Console.Write("Informe o número: ");
+            Console.Write("\tInforme o número: ");
             Numero = Console.ReadLine();
             
-            Console.Write("Informe o seu complemento: ");
+            Console.Write("\tInforme o seu complemento: ");
             Complemento = Console.ReadLine();
 
-            Console.Write("Informe o bairro: ");
+            Console.Write("\tInforme o bairro: ");
             Bairro = Console.ReadLine();
 
-            Console.Write("Informe o CEP: ");
+            Console.Write("\tInforme o CEP: ");
             CEP = Console.ReadLine();
 
-            Console.Write("Informe o nome da cidade: ");
+            Console.Write("\tInforme o nome da cidade: ");
             Cidade = Console.ReadLine();
 
-            Console.Write("Informe o nome do estado: ");
+            Console.Write("\tInforme o nome do estado: ");
             Estado = Console.ReadLine();
 
             return ToString();

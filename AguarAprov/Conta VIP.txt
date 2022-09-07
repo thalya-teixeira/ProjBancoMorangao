@@ -1,1 +1,0 @@
-0;Conta Jurídica;Agência: ;Telefone: ;Data de Abertura: 25/10/1997 00:00:00;Razão Social: thalya;CNPJ: 4564654;Renda: 0;Tipo de conta: Conta VIP;

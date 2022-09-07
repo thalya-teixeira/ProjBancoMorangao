@@ -48,30 +48,30 @@ namespace ProjBancoMorangao
 
         public string CadastraPJ(int id)
         {
-            Console.WriteLine("***************************** BANCO MORANGÃO ********************************\n");
-            Console.WriteLine("************* SOLICITAÇÃO DE ABERTURA DE CONTA PESSOA JURÍDICA **************\n");
+            
+            Console.WriteLine("\t°°°°°°°°°°°  SOLICITAÇÃO PESSOA JURÍDICA °°°°°°°°°°°°°");
 
             IdPessoa = id;
 
-            Console.WriteLine("Digite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
+            Console.WriteLine("\t\nDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
             Agencia = Console.ReadLine();
 
-            Console.WriteLine("Informe o nome da sua empresa: ");
+            Console.WriteLine("\tInforme o nome da sua empresa: ");
             Nome = Console.ReadLine();
 
-            Console.Write("Digite o telefone: ");
+            Console.Write("\tDigite o telefone: ");
             Telefone = Console.ReadLine();
 
-            Console.Write("Informe a Razão Social: ");
+            Console.Write("\tInforme a Razão Social: ");
             RazaoSocial = Console.ReadLine();
 
-            Console.Write("Informe sua data de abertura: ");
+            Console.Write("\tInforme sua data de abertura [dd/mm/aa]: ");
             Data = DateTime.Parse(Console.ReadLine());
 
-            Console.Write("Informe o seu CNPJ: ");
+            Console.Write("\tInforme o seu CNPJ: ");
             CNPJ = Console.ReadLine();
 
-            Console.Write("Informe sua renda: R$");
+            Console.Write("\tInforme sua renda: R$");
             Renda = float.Parse(Console.ReadLine());
 
             return DadosClientePJ();
@@ -93,12 +93,12 @@ namespace ProjBancoMorangao
             //cria o arquivo com os dados da pessoa e o com o contador do id 
             try
             {
-                StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Solicitacao\\pessoajuridica{id}.txt");
+                StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Solicitacao\\{CNPJ}.txt");
                 arqId.WriteLine(cadastrapj + endereco);
                 arqId.Close();
                 id++;
                 SaveID(id);
-                Console.WriteLine("SOLICITAÇÃO DE ABERTURA DE CONTA REALIZADA COM SUCESSO!!!");
+                Console.WriteLine("\n\tSOLICITAÇÃO DE ABERTURA DE CONTA REALIZADA COM SUCESSO!!!");
             }
             catch (Exception e)
             {

@@ -41,32 +41,78 @@ namespace ProjBancoMorangao
 
         }
 
-        public void SacarContVIP(float valor)
+        public void SacarCVip(float valor)
         {
             //verifica se o saldo ficar mais que R$ -5000,00 não permite o método
             if(this.Saldo - valor < -5000)
             {
-                Console.WriteLine("Você não possui limite para realizar essa transação!");
+                Console.WriteLine("\tVocê não possui limite para realizar essa transação!");
                 return;
             }
             else
             {
                 Sacar(valor, this.DadoCliente);
-                Console.WriteLine("Débito/Pagamento realizado com sucesso!");
+                Console.WriteLine("\tDébito/Pagamento realizado com sucesso!");
             }
         }
 
         //método para realizar transferência
         public void Transferir(string cpfCnpjDestino, float valorSolicitado)
         {
-            SacarContVIP(valorSolicitado);
+            SacarCVip(valorSolicitado);
             Depositar(valorSolicitado, cpfCnpjDestino);
         }
 
         //método para realizar pagamentos
-        public void RealizarPagamento(float valor)
+        public void RealizaPagamento(float valor)
         {
-            SacarContVIP(valor);
+            SacarCVip(valor);
         }
+
+        public void OpCaixaEletronica()
+        {
+            int operacao = MenuCaixaEletronico();
+
+            switch (operacao)
+            {
+                case 1:
+                    Console.WriteLine("\tInforme o valor do saque desejado: ");
+                    float saque = float.Parse(Console.ReadLine());
+                    SacarCVip(saque);
+                    break;
+
+                case 2:
+                    Console.WriteLine("\tInforme o valor que deseja depositar: ");
+                    float deposito = float.Parse(Console.ReadLine());
+                    Depositar(deposito, DadoCliente);
+                    break;
+
+                case 3:
+                    Console.WriteLine("\tInforme o CPF do destinatário: ");
+                    string cpf = Console.ReadLine();
+                    Console.WriteLine("Informe o valor que deseja transferir: ");
+                    float transfere = float.Parse(Console.ReadLine());
+                    Transferir(cpf, transfere);
+                    break;
+
+                case 4:
+                    Console.WriteLine("\tInforme o valor do boleto para pagamento: ");
+                    float pagamento = float.Parse(Console.ReadLine());
+                    RealizaPagamento(pagamento);
+                    break;
+
+                case 5:
+                    //extrato 
+                    break;
+
+                case 6:
+                    SolicitaEmprestimo(DadoCliente);
+                    break;
+
+            }
+
+        }
+
+
     }
 }

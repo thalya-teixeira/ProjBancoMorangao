@@ -11,7 +11,7 @@ namespace ProjBancoMorangao
     {
         public ContaNormal(string cpfCnpj)
         {
-        
+
             //Busca o arquivo que tem o CPF/CNPJ recebido como parâmetro
             DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco");
             var arq = dir.GetFiles($"{cpfCnpj}.*");
@@ -41,32 +41,76 @@ namespace ProjBancoMorangao
             Endereco = end;
         }
 
-        public void SacarContNorm(float valor)
+        public void SacarCNorm(float valor)
         {
             //verifica se o saldo ficar mais que R$ -3000,00 não permite efetuar o método
-            if(this.Saldo - valor < -3000)
+            if (this.Saldo - valor < -3000)
             {
-                Console.WriteLine("Você não possui limite para realizar essa transição!");
+                Console.WriteLine("\tVocê não possui limite para realizar essa transição!");
                 return;
             }
             else
             {
                 Sacar(valor, this.DadoCliente);
-                Console.WriteLine("Débito/Pagamento realizado com sucesso!");
+                Console.WriteLine("\tDébito/Pagamento realizado com sucesso!");
             }
         }
 
         //método para realizar transferência
         public void Transferir(string cpfCnpjDestino, float valorSolicitado)
         {
-            SacarContNorm(valorSolicitado);
+            SacarCNorm(valorSolicitado);
             Depositar(valorSolicitado, cpfCnpjDestino);
         }
 
         //método para realizar pagamentos
         public void RealizaPagamento(float valor)
         {
-            SacarContNorm(valor);
+            SacarCNorm(valor);
+        }
+
+        public void OpCaixaEletronica()
+        {
+            int operacao = MenuCaixaEletronico();
+
+            switch (operacao)
+            {
+                case 1:
+                    Console.WriteLine("\tInforme o valor do saque desejado: ");
+                    float saque = float.Parse(Console.ReadLine());
+                    SacarCNorm(saque);
+                    break;
+
+                case 2:
+                    Console.WriteLine("\tInforme o valor que deseja depositar: ");
+                    float deposito = float.Parse(Console.ReadLine());
+                    Depositar(deposito, DadoCliente);
+                    break;
+
+                case 3:
+                    Console.WriteLine("\tInforme o CPF do destinatário: ");
+                    string cpf = Console.ReadLine();
+                    Console.WriteLine("\tInforme o valor que deseja transferir: ");
+                    float transfere = float.Parse(Console.ReadLine());
+                    Transferir(cpf, transfere);
+                    break;
+
+                case 4:
+                    Console.WriteLine("\tInforme o valor do boleto para pagamento: ");
+                    float pagamento = float.Parse(Console.ReadLine());
+                    RealizaPagamento(pagamento);
+                    break;
+
+                case 5:
+                    //extrato 
+                    break;
+
+                case 6:
+                    SolicitaEmprestimo(DadoCliente);
+                    break;
+
+            }
+
         }
 
     }

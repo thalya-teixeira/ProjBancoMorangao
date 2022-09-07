@@ -1,0 +1,1 @@
+23;Conta Física;1;thalya;16981;25/10/1997;356;0;s;Logradouro: humaita;Número: 430;Complemento: 304;Bairro: artico;CEP: 14800;Cidade: araraq;Estado: sp;Tipo de conta: Conta Normal;0;

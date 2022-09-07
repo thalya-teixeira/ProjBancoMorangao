@@ -46,33 +46,36 @@ namespace ProjBancoMorangao
 
         public string CadastrarPF(int id)
         {
-            Console.WriteLine("***************************** BANCO MORANGÃO ********************************\n");
-            Console.WriteLine("********** SOLICITAÇÃO DE ABERTURA DE CONTA CADASTRO PESSOA FÍSICA **********\n");
-
+            
+            Console.WriteLine("\t°°°°°°°°°°°°  SOLICITAÇÃO PESSOA FISÍCA  °°°°°°°°°°°°°°°");
+            
             IdPessoa = id;
 
-            Console.WriteLine("Digite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
+            Console.WriteLine("\n\tDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
             Agencia = Console.ReadLine();
 
-            Console.Write("Informe o seu nome completo: ");
+            Console.Write("\tInforme o seu nome completo: ");
             Nome = Console.ReadLine();
 
-            Console.Write("Informe sua data de nascimento: ");
+            Console.Write("\tInforme sua data de nascimento [dd/mm/aa]: ");
             Data = DateTime.Parse(Console.ReadLine());
 
-            Console.Write("Informe o seu CPF: ");
+            Console.Write("\tInforme o seu CPF: ");
             CPF = Console.ReadLine();
 
-            Console.Write("Informe o seu telefone: ");
+            Console.Write("\tInforme o seu telefone: ");
             Telefone = Console.ReadLine();
 
-            Console.Write("Informe a sua renda: R$");
+            Console.Write("\tInforme a sua renda: R$");
             Renda = float.Parse(Console.ReadLine());
 
-            Console.Write("Estudante? S/N: ");
+            Console.Write("\tEstudante? S/N: ");
             string estudante = Console.ReadLine().ToLower().Trim();
+
             if (estudante == "s")
                 Estudante = "s";
+               // Console.WriteLine(" ♦ Digite seu RA: ");
+               //RA = Console.ReadLine();
             else
                 Estudante = "s";
 
@@ -93,12 +96,12 @@ namespace ProjBancoMorangao
             //cria o arquivo com os dados da pessoa e o com o contador do id  C:
             try
             {
-                StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Solicitacao\\pessoafisica{id}.txt");
+                StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Solicitacao\\{CPF}.txt");
                 arqId.WriteLine(cadastrapf + endereco);
                 arqId.Close();
                 id++;
                 SaveID(id);
-                Console.WriteLine("SOLICITAÇÃO DE ABERTURA DE CONTA REALIZADA COM SUCESSO!!!");
+                Console.WriteLine("\tSOLICITAÇÃO DE ABERTURA DE CONTA REALIZADA COM SUCESSO!!\n");
             }
             catch (Exception e)
             {

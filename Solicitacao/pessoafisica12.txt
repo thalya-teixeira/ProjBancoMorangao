@@ -1,1 +1,0 @@
-12;Conta Física;;thalya;46546;25/10/1997;356710;2000;s;IdPessoa: 12;Logradouro: rua humaitanNúmero: 430;Complemento: 430;Bairro: artico;CEP: 14800;Cidade: araraq;Estado: sp;

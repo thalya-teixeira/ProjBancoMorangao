@@ -15,23 +15,38 @@ namespace ProjBancoMorangao
         {
 
         }
-        public Atendente(string agencia)
+        public void AcessoAtendente()
         {
-            if (agencia.Contains('1'))
+            int agencia = 0;
+
+
+            Console.WriteLine("\t°°°°°°°   ACESSO ADMINISTRATIVO RESPONSÁVEL   °°°°°°°°");
+            Console.WriteLine("       Digite o número da agência operante: [1], [2] OU [3]: ");
+            agencia = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            if (agencia == 1)
             {
-                Nome = "Louise";
-                Cargo = "Atendente";
+                Console.WriteLine(Nome = "\tNome do funcionário: Louise");
+                Console.WriteLine(Cargo = "\tCargo: Atendente");
+                Console.WriteLine();
+
             }
-            else if (agencia.Contains('2'))
+            else if (agencia == 2)
             {
-                Nome = "Thalya";
-                Cargo = "Atendente";
+                Console.WriteLine(Nome = "\tNome do funcionário: Thalya ");
+                Console.WriteLine(Cargo = "\tCargo: Atendente ");
+                Console.WriteLine();
             }
-            else if (agencia.Contains('3'))
+            else if (agencia == 3)
             {
-                Nome = "Weslen";
-                Cargo = "Atendente";
+                Console.WriteLine(Nome = "Nome do funcionário: Weslen ");
+                Console.WriteLine(Cargo = "Cargo: Atendente ");
+                Console.WriteLine();
             }
+            //else if (agencia != 1 && agencia != 2 && agencia != 3)
+            //{
+            // Console.WriteLine("AGÊNCIA INVÁLIDA. TENTE NOVAMENTE");
+            //}
         }
 
         public void AbreConta()
@@ -47,11 +62,11 @@ namespace ProjBancoMorangao
 
             if (solicitacoes.Count == 0)
             { 
-                Console.WriteLine("Não há nenhuma solicitação no momento!");
+                Console.WriteLine("\tNão há nenhuma solicitação no momento!");
                 return;
             }
             else
-                Console.WriteLine($"Há {solicitacoes.Count} solicitações pendentes!");
+                Console.WriteLine($"\tHá {solicitacoes.Count} solicitações pendentes!");
 
             //mostra na tela os dados da solicitação
             string[] solicita = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Solicitacao\\{solicitacoes.First()}");
@@ -59,7 +74,7 @@ namespace ProjBancoMorangao
 
             List<string> solicitacaoList = new List<string>();
 
-            Console.WriteLine($"\nDados da solicitação: ");
+            Console.WriteLine($"\n\tDados da solicitação: ");
 
             foreach (string cont in solicita)
             {
@@ -71,13 +86,14 @@ namespace ProjBancoMorangao
                     solicitacaoList.Add(solicitacao[i]);
                 }
             }
-            Console.WriteLine("Criar conta para o cliente? [S/N]: ");
+            Console.WriteLine("\tCriar conta para o cliente? [S/N]: ");
             string ler = Console.ReadLine().ToLower().Trim();
 
             if (ler.Contains("s"))
             {
-                Console.WriteLine("Digite o tipo de conta:\n\n1 - Para Conta Universitária\n2 - Para Conta Normal\n3 - Para conta VIP");
+                Console.WriteLine("\tDigite o tipo de conta:\n\n1 - Para Conta Universitária\n2 - Para Conta Normal\n3 - Para conta VIP");
                 int tipo = int.Parse(Console.ReadLine());
+                Console.WriteLine("\t         O GERENTE IRÁ ANALISAR SUA CONTA EM BREVE      ");
 
                 //switch para inserir o tipo de conta que o atendente escolher e depois envia o arquivo para o diretório AguardAprov para ser aprovado pelo gerente
                 switch (tipo)
@@ -107,6 +123,10 @@ namespace ProjBancoMorangao
                         break;
 
                 }
+            }
+            else
+            {
+                return;
             }
         }
     }
