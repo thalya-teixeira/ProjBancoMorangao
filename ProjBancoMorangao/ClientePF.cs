@@ -46,12 +46,12 @@ namespace ProjBancoMorangao
 
         public string CadastrarPF(int id)
         {
-            
+
             Console.WriteLine("\t°°°°°°°°°°°°  SOLICITAÇÃO PESSOA FISÍCA  °°°°°°°°°°°°°°°");
-            
+
             IdPessoa = id;
 
-            Console.WriteLine("\n\tDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
+            Console.Write("\n\tDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
             Agencia = Console.ReadLine();
 
             Console.Write("\tInforme o seu nome completo: ");
@@ -74,8 +74,8 @@ namespace ProjBancoMorangao
 
             if (estudante == "s")
                 Estudante = "s";
-               // Console.WriteLine(" ♦ Digite seu RA: ");
-               //RA = Console.ReadLine();
+            // Console.WriteLine(" ♦ Digite seu RA: ");
+            //RA = Console.ReadLine();
             else
                 Estudante = "s";
 

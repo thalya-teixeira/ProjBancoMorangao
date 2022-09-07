@@ -1,1 +1,0 @@
-25;Conta Física;1;THALYA;16981;25/10/1997;299;0;s;Logradouro: humaita;Número: 666;Complemento: 666;Bairro: centro;CEP: 14;Cidade: araraq;Estado: sp;Tipo de conta: Conta VIP;

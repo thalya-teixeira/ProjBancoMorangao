@@ -48,15 +48,15 @@ namespace ProjBancoMorangao
 
         public string CadastraPJ(int id)
         {
-            
+
             Console.WriteLine("\t°°°°°°°°°°°  SOLICITAÇÃO PESSOA JURÍDICA °°°°°°°°°°°°°");
 
             IdPessoa = id;
 
-            Console.WriteLine("\t\nDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
+            Console.Write("\t\nDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
             Agencia = Console.ReadLine();
 
-            Console.WriteLine("\tInforme o nome da sua empresa: ");
+            Console.Write("\tInforme o nome da sua empresa: ");
             Nome = Console.ReadLine();
 
             Console.Write("\tDigite o telefone: ");

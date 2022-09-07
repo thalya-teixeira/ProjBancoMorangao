@@ -15,40 +15,7 @@ namespace ProjBancoMorangao
         {
 
         }
-        public void AcessoAtendente()
-        {
-            int agencia = 0;
-
-
-            Console.WriteLine("\t°°°°°°°   ACESSO ADMINISTRATIVO RESPONSÁVEL   °°°°°°°°");
-            Console.WriteLine("       Digite o número da agência operante: [1], [2] OU [3]: ");
-            agencia = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-            if (agencia == 1)
-            {
-                Console.WriteLine(Nome = "\tNome do funcionário: Louise");
-                Console.WriteLine(Cargo = "\tCargo: Atendente");
-                Console.WriteLine();
-
-            }
-            else if (agencia == 2)
-            {
-                Console.WriteLine(Nome = "\tNome do funcionário: Thalya ");
-                Console.WriteLine(Cargo = "\tCargo: Atendente ");
-                Console.WriteLine();
-            }
-            else if (agencia == 3)
-            {
-                Console.WriteLine(Nome = "Nome do funcionário: Weslen ");
-                Console.WriteLine(Cargo = "Cargo: Atendente ");
-                Console.WriteLine();
-            }
-            //else if (agencia != 1 && agencia != 2 && agencia != 3)
-            //{
-            // Console.WriteLine("AGÊNCIA INVÁLIDA. TENTE NOVAMENTE");
-            //}
-        }
-
+      
         public void AbreConta()
         {
             //verifica a quantidade de solicitações
@@ -61,7 +28,7 @@ namespace ProjBancoMorangao
             }
 
             if (solicitacoes.Count == 0)
-            { 
+            {
                 Console.WriteLine("\tNão há nenhuma solicitação no momento!");
                 return;
             }
@@ -93,7 +60,7 @@ namespace ProjBancoMorangao
             {
                 Console.WriteLine("\tDigite o tipo de conta:\n\n1 - Para Conta Universitária\n2 - Para Conta Normal\n3 - Para conta VIP");
                 int tipo = int.Parse(Console.ReadLine());
-                Console.WriteLine("\t         O GERENTE IRÁ ANALISAR SUA CONTA EM BREVE      ");
+                Console.WriteLine("\tO GERENTE IRÁ ANALISAR SUA CONTA EM BREVE");
 
                 //switch para inserir o tipo de conta que o atendente escolher e depois envia o arquivo para o diretório AguardAprov para ser aprovado pelo gerente
                 switch (tipo)

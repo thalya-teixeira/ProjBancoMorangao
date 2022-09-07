@@ -19,9 +19,9 @@ namespace ProjBancoMorangao
 
         public Endereco()
         {
-            
+
         }
-        
+
         public Endereco(string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado)
         {
             Logradouro = logradouro;
@@ -50,10 +50,10 @@ namespace ProjBancoMorangao
             IdPessoa = idPessoa;
             Console.Write("\tInforme o seu logradouro(rua): ");
             Logradouro = Console.ReadLine();
-            
+
             Console.Write("\tInforme o número: ");
             Numero = Console.ReadLine();
-            
+
             Console.Write("\tInforme o seu complemento: ");
             Complemento = Console.ReadLine();
 

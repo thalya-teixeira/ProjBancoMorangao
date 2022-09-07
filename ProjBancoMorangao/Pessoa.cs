@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProjBancoMorangao
 {
-    internal class Pessoa 
+    internal class Pessoa
     {
-        protected string Nome  { get; set; }
+        public string Nome { get; set; }
         protected DateTime Data { get; set; }
         protected string Telefone { get; set; }
         protected int IdPessoa { get; set; }
@@ -27,7 +27,7 @@ namespace ProjBancoMorangao
             string[] num = new string[1];
 
             foreach (string cont in contador)
-            
+
                 num[0] = cont;
             Console.WriteLine(num[0]);
             int id = int.Parse(num[0]);

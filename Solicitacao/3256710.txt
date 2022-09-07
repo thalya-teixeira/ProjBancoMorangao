@@ -1,1 +1,0 @@
-24;Conta Física;1;thalya;1698100;25/10/1997;3256710;0;s;Logradouro: rua humaita;Número: 430;Complemento: 32;Bairro: vila;CEP: 14;Cidade: araraq;Estado: sp;

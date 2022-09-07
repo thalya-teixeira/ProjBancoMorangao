@@ -9,7 +9,7 @@ namespace ProjBancoMorangao
 {
     internal class CCUniversitaria : ContaCorrente
     {
-        public CCUniversitaria (string cpfCnpj)
+        public CCUniversitaria(string cpfCnpj)
         {
             //busca o arquivo que tem o cpf
             DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco");
@@ -35,78 +35,122 @@ namespace ProjBancoMorangao
 
         }
 
-        public void SacarCUniver(float valor)
+        /* public override string ToString()
+        {
+            return $"{Pessoa.ToString()}{Endereco.ToString()}Saldo = {Saldo};";
+        }
+        */
+
+        public bool SacarCUniver(float valor)
         {
             //verifica se o saldo fica mais que R$ -1000,00 
-            if(this.Saldo - valor < -1000)
+            if (this.Saldo - valor < -1000)
             {
                 Console.WriteLine("\tVocê não possui limite para realizar essa transação!");
-                return;
+                return false;
             }
             else
             {
                 Sacar(valor, this.DadoCliente);
                 Console.WriteLine("\tDébito/Pagamento realizado com sucesso!");
+                return true;
             }
         }
         //método para realizar transferência
         public void Transferir(string cpfCnpjDestino, float valorSolicitado)
         {
-            SacarCUniver(valorSolicitado);
-            Depositar(valorSolicitado, cpfCnpjDestino);
+            if (SacarCUniver(valorSolicitado))
+            {
+                Depositar(valorSolicitado, cpfCnpjDestino);
+                AddExtrato(DadoCliente, $"TRANSFERÊNCIA PARA O CPF/CNPJ {cpfCnpjDestino}: {DateTime.Now} ---------- R${valorSolicitado:N2}");
+            }
         }
 
         //método para realizar pagamentos
         public void RealizaPagamento(float valor)
         {
-            SacarCUniver(valor);
+            if (SacarCUniver(valor))
+            {
+                AddExtrato(DadoCliente, $"PAGAMENTO REALIZADO: {DateTime.Now} ---------- R${valor:N2}");
+            }
         }
 
         public void OpCaixaEletronica()
         {
-            int operacao = MenuCaixaEletronico();
-            
-            switch(operacao)
+            int operacao;
+            do
             {
-                case 1:
-                    Console.WriteLine("\tInforme o valor do saque desejado: ");
-                float saque = float.Parse(Console.ReadLine());
-                SacarCUniver(saque);
-                break;
+                operacao = MenuCaixaEletronico();
 
-                case 2:
-                    Console.WriteLine("\tInforme o valor que deseja depositar: ");
-                float deposito = float.Parse(Console.ReadLine());
-                Depositar(deposito, DadoCliente);
-                break;
+                switch (operacao)
+                {
+                    case 1:
+                        Console.Write("\tInforme o valor do saque desejado: ");
+                        float saque = float.Parse(Console.ReadLine());
+                        if (SacarCUniver(saque))
+                        {
+                            AddExtrato(DadoCliente, $"SAQUE REALIZADO: {DateTime.Now} ---------- R${saque:N2}");
+                        }
+                        Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
 
-                case 3:
-                    Console.WriteLine("\tInforme o CPF do destinatário: ");
-                string cpf = Console.ReadLine();
-                Console.WriteLine("Informe o valor que deseja transferir: ");
-                float transfere = float.Parse(Console.ReadLine());
-                Transferir(cpf, transfere);
-                break;
+                    case 2:
+                        Console.Write("\tInforme o valor que deseja depositar: ");
+                        float deposito = float.Parse(Console.ReadLine());
 
-                case 4:
-                    Console.WriteLine("\tInforme o valor do boleto para pagamento: ");
-                float pagamento = float.Parse(Console.ReadLine());
-                RealizaPagamento(pagamento);
-                break;
+                        try
+                        {
+                            Depositar(deposito, DadoCliente);
+                            AddExtrato(DadoCliente, $"DEPÓSITO EM CONTA: {DateTime.Now} ---------- R${deposito:N2}");
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Não foi possível realizar o depósito.");
+                        }
+                        Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
 
-                case 5:
-                    //extrato 
-                    break;
+                    case 3:
+                        Console.Write("\tInforme o CPF do destinatário: ");
+                        string cpf = Console.ReadLine();
+                        Console.Write("Informe o valor que deseja transferir: ");
+                        float transfere = float.Parse(Console.ReadLine());
+                        Transferir(cpf, transfere);
+                        Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
 
-                case 6:
-                    SolicitaEmprestimo(DadoCliente);
-                break;
+                    case 4:
+                        Console.Write("\tInforme o valor do boleto para pagamento: ");
+                        float pagamento = float.Parse(Console.ReadLine());
+                        RealizaPagamento(pagamento);
+                        Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
 
-            }
+                    case 5:
+                        GetExtrato(DadoCliente);
+                        Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
 
+                    case 6:
+                        SolicitaEmprestimo(DadoCliente);
+                        Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+
+            } while (operacao != 0);
         }
-
     }
-
 }
 

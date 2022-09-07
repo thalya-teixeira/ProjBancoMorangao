@@ -6,43 +6,116 @@ using System.Threading.Tasks;
 
 namespace ProjBancoMorangao
 {
-    internal class Agencia
+    internal class Agencia 
     {
-        public string Nome { get; set; }
-        public string Cargo { get; set; }
+        public string NumAgencia { get; set; }
+        public Endereco Endereco { get; set; }
+        public Atendente Atendente { get; set; }
+        public Gerente Gerente { get; set; }
 
-        public void AcessoAtendente()
+        public Agencia(string numAgencia, int funcionario)
         {
-            int agencia = 0;
+            this.NumAgencia = numAgencia;
 
+            if(numAgencia == "1")
+            {
+                if(funcionario == 1)
+                {
+                    Atendente = new();
+                    Atendente.Nome = "Vinicius";
+                    Console.WriteLine($"\n\tBem vindo atendente {Atendente.Nome}!");
+                    Atendente.AbreConta();
+                }
+                else
+                {
+                    Gerente = new();
+                    Gerente.Nome = "Thalya";
+                    Gerente.Senha = 666;
+                    Console.WriteLine($"\n\tGerente {Gerente.Nome} digite sua senha: ");
+                    int senha = int.Parse(Console.ReadLine());
+                    if (Gerente.Autentica(senha))
+                    {
+                        Console.WriteLine("\tAcesso liberado!");
+                        Console.WriteLine("\t[1] - Aprova Conta [2] - Aprova Empréstimo");
+                        string opcao = Console.ReadLine();
+                        if(opcao == "1")
+                        {
+                            Gerente.AprovaConta();
+                        }
+                        else
+                        {
+                            Gerente.AprovaEmprestimo();
+                        }
+                    }
+                }
+            }
 
-            Console.WriteLine("\t°°°°°°°   ACESSO ADMINISTRATIVO RESPONSÁVEL   °°°°°°°°");
-            Console.WriteLine(" ♦ Digite o número da agência operante: [1], [2] OU [3]: ");
-            agencia = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-            if (agencia == 1)
+            if(numAgencia == "2")
             {
-                Console.WriteLine(Nome = "Nome do funcionário: Louise");
-                Console.WriteLine(Cargo = "Cargo: Atendente");
-                Console.WriteLine();
+                if(funcionario == 1)
+                {
+                    Atendente = new();
+                    Atendente.Nome = "Weslen";
+                    Console.WriteLine($"\n\tBem vindo atendente {Atendente.Nome}!");
+                    Atendente.AbreConta();
+                }
+                else
+                {
+                    Gerente = new();
+                    Gerente.Nome = "Louise";
+                    Gerente.Senha = 666;
+                    Console.WriteLine($"\n\tGerente {Gerente.Nome} digite sua senha: ");
+                    int senha = int.Parse(Console.ReadLine());
+                    if (Gerente.Autentica(senha))
+                    {
+                        Console.WriteLine("\tAcesso liberado!");
+                        Console.WriteLine("\t[1] - Aprova Conta [2] - Aprova Empréstimo");
+                        string opcao = Console.ReadLine();
+                        if (opcao == "1")
+                        {
+                            Gerente.AprovaConta();
+                        }
+                        else
+                        {
+                            Gerente.AprovaEmprestimo();
+                        }
+                    }
+                }
+            }
 
-            }
-            else if (agencia == 2)
+            if(numAgencia == "3")
             {
-                Console.WriteLine(Nome = "Nome do funcionário: Thalya ");
-                Console.WriteLine(Cargo = "Cargo: Atendente ");
-                Console.WriteLine();
-            }
-            else if (agencia == 3)
-            {
-                Console.WriteLine(Nome = "Nome do funcionário: Weslen ");
-                Console.WriteLine(Cargo = "Cargo: Atendente ");
-                Console.WriteLine();
-            }
-            else if (agencia != 1 || agencia != 2 || agencia != 3)
-            {
-                Console.WriteLine("COMANDO INVÁLIDO! TENTE NOVAMENTE!");
+                if (funcionario == 1)
+                {
+                    Atendente = new();
+                    Atendente.Nome = "Papini";
+                    Console.WriteLine($"\n\tBem vindo atendente {Atendente.Nome}!");
+                    Atendente.AbreConta();
+                }
+                else
+                {
+                    Gerente = new();
+                    Gerente.Nome = "Pestana";
+                    Gerente.Senha = 666;
+                    Console.WriteLine($"\n\tGerente {Gerente.Nome} digite sua senha: ");
+                    int senha = int.Parse(Console.ReadLine());
+                    if (Gerente.Autentica(senha))
+                    {
+                        Console.WriteLine("\tAcesso liberado!");
+                        Console.WriteLine("\t[1] - Aprova Conta [2] - Aprova Empréstimo");
+                        string opcao = Console.ReadLine();
+                        if (opcao == "1")
+                        {
+                            Gerente.AprovaConta();
+                        }
+                        else
+                        {
+                            Gerente.AprovaEmprestimo();
+                        }
+                    }
+                }
             }
         }
+
     }
 }

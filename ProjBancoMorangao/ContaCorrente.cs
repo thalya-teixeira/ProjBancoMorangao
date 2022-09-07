@@ -22,7 +22,7 @@ namespace ProjBancoMorangao
         }
 
         //método para realizar depósito
-       public void Depositar (float valor, string cpfCnpj)
+        public void Depositar(float valor, string cpfCnpj)
         {
             //busca o arquivo com os dados do solicitante
             DirectoryInfo dir = new DirectoryInfo("C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco");
@@ -38,7 +38,7 @@ namespace ProjBancoMorangao
             dados[17] = saldoContaDestino.ToString();
 
             //sobrescreve o mesmo arquivo com o saldo atualizado
-            System.IO.StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
+            System.IO.StreamWriter arqId = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
             arqId.WriteLine($"{dados[0]};{dados[1]};{dados[2]};{dados[3]};{dados[4]};{dados[5]};{dados[6]};{dados[7]};{dados[8]};{dados[9]};{dados[10]};" +
                 $"{dados[11]};{dados[12]};{dados[13]};{dados[14]};{dados[15]};{dados[16]};{dados[17]};");
             arqId.Close();
@@ -70,10 +70,10 @@ namespace ProjBancoMorangao
         {
             float valorParcela;
 
-            Console.WriteLine("Digite o valor do empréstimo: R$");
+            Console.WriteLine("\tDigite o valor do empréstimo: R$");
             float valor = float.Parse(Console.ReadLine());
 
-            Console.Write("Digite a quantidade de parcelas (máximo 36x): ");
+            Console.Write("\tDigite a quantidade de parcelas (máximo 36x): ");
             int parcelas = int.Parse(Console.ReadLine());
 
             if (parcelas > 10)
@@ -94,11 +94,11 @@ namespace ProjBancoMorangao
             Console.WriteLine("\nDESEJA ENVIAR A SOLICITAÇÃO? [S/N]: ");
             string envia = Console.ReadLine().ToLower();
 
-            if(envia == "s")
+            if (envia == "s")
             {
                 //Envia os dados do solicitante e o valor para o diretório SolicitaçõesEmpréstimos para ser aprovado pelo cliente
-                string[] solicitante = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
-                System.IO.StreamWriter arqPessoa = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\SolicitaçãoEmprest\\{cpfCnpj}.txt");
+                string[] solicitante = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
+                System.IO.StreamWriter arqPessoa = new StreamWriter($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\SolicitaçãoEmprest\\{cpfCnpj}.txt");
                 arqPessoa.WriteLine($"{solicitante[0]}{valor};");
                 arqPessoa.Close();
             }
@@ -106,37 +106,64 @@ namespace ProjBancoMorangao
             {
                 Console.WriteLine("Solicitação cancelada!");
             }
-
+            Console.WriteLine("\t--------------------------------------------------------");
+            Console.WriteLine("\t|              EMPRÉSTIMO SOLICITADO                   |");
+            Console.WriteLine("\t|        O GERENTE IRÁ ANALISAR SUA SOLICITAÇÃO        |");
+            Console.WriteLine("\t|         PRESSIONE ENTER PARA VOLTAR AO MENU          |");
+            Console.WriteLine("\t|______________________________________________________|");
         }
 
-        protected void AddExtrato(string cpfCnpj, string extrato)
+        protected void AddExtrato(string cpfCnpj, string extrato) //adicionar o extrato na conta após movimentacoes nas contas
         {
-            string caminho = $"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\Extrato\\{cpfCnpj}.txt";
-
-            string texto = $"{extrato}\n";
-
-            File.AppendAllText(caminho, texto);
-        }
-
-        public void GetExtrato(string cpfCnpj)
-        {
-            FileStream fs = File.OpenRead($"C:\\Users\\Thalya\\source\\repos\\PBancoMorangao\\Extrato\\{cpfCnpj}.txt");
-
-            byte[] b = new byte[1024];
-            UTF8Encoding temp = new UTF8Encoding();
-
-            Console.WriteLine("\t°°°°°°°°°°°°°     EXTRATO DA CONTA     °°°°°°°°°°°°°°°°");
-            Console.WriteLine($"CPF/CNPJ: {DadoCliente}");
-
-            while(fs.Read(b, 0, b.Length) > 0)
+            try
             {
-                Console.WriteLine(temp.GetString(b));
-            }
-            Console.WriteLine("\t°°°°°°°°°°°°  SOLICITAÇÃO PESSOA FISÍCA  °°°°°°°°°°°°°°°");
+                string caminho = $"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Extrato\\{cpfCnpj}.txt";
 
-            Console.WriteLine("\t°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-            Console.WriteLine($"\t\nSALDO ATUAL DA CONTA: R${Saldo:N2}");
-            Console.WriteLine("\t°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                string texto = $"{extrato}\n";
+
+                File.AppendAllText(caminho, texto);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"\tNão foi possível adicionar extrato! Contate o suporte. Erro: {e.Message}");
+                Console.WriteLine("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                return;
+            }
+
+        }
+
+        public void GetExtrato(string cpfCnpj) // imprimi o extrato
+        {
+            try
+            {
+                FileStream fs = File.OpenRead($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Extrato\\{cpfCnpj}.txt");
+
+                byte[] b = new byte[1024];
+                UTF8Encoding temp = new UTF8Encoding();
+
+                Console.WriteLine("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°   EXTRATO DA CONTA  °°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                Console.WriteLine($"CPF/CNPJ: {DadoCliente}");
+
+                while (fs.Read(b, 0, b.Length) > 0)
+                {
+                    Console.WriteLine(temp.GetString(b));
+                }
+                Console.WriteLine("----------------------------------------------------------------------------");
+                Console.WriteLine("                                                                            ");
+                Console.WriteLine($"SALDO ATUAL DA CONTA: R${Saldo:N2}                                         ");
+                Console.WriteLine($"                                                                           ");
+                Console.WriteLine("____________________________________________________________________________");
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"\tNão há impressões disponíveis no momento!\n\tO cliente não efetuou nenhum tipo de movimentação em sua conta. ");
+                Console.WriteLine("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                return;
+            }
         }
 
         protected int MenuCaixaEletronico()
@@ -155,7 +182,7 @@ namespace ProjBancoMorangao
                 Console.WriteLine("\t|                                                      |");
                 Console.WriteLine("\t|   opção 0 : Sair                                     |");
                 Console.WriteLine("\t|______________________________________________________|");
-                Console.WriteLine("Opção: ");
+                Console.Write("Opção: ");
 
                 opc = int.Parse(Console.ReadLine());
                 return opc;
