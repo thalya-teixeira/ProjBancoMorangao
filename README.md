@@ -1,4 +1,4 @@
-<h1> 🍓🍓🍓🍓🍓 Bem vindos ao Banco do Morangão! 🍓🍓🍓🍓🍓
+<h1> 🍓🍓🍓 Bem vindos ao Banco do Morangão! 🍓🍓🍓
 </h1>
 
 O Banco do Morangão possui diversas agências. As agências possuem caixas eletrônicos, através dos quais os clientes podem realizar algumas operações básicas como:
