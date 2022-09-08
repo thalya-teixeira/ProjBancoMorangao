@@ -134,17 +134,23 @@ namespace ProjBancoMorangao
 
         }
 
-        public void GetExtrato(string cpfCnpj) // imprimi o extrato
+        public void GetExtrato(string cpfCnpj) // imprimi o extrato na tela
         {
             try
             {
+                string[] conta = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Extrato\\{cpfCnpj}.txt");
+                string[] dados = new string[18];
+                foreach (string dado in conta)
+                    dados = dado.Split(';');
+
                 FileStream fs = File.OpenRead($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Extrato\\{cpfCnpj}.txt");
 
                 byte[] b = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding();
+                UTF8Encoding temp = new (true);
 
                 Console.WriteLine("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°   EXTRATO DA CONTA  °°°°°°°°°°°°°°°°°°°°°°°°°°°°");
                 Console.WriteLine($"CPF/CNPJ: {DadoCliente}");
+                Console.WriteLine($"Nome: { dados[3]}\n"); //posicao 3 
 
                 while (fs.Read(b, 0, b.Length) > 0)
                 {

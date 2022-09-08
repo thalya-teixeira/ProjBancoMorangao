@@ -177,7 +177,7 @@ namespace ProjBancoMorangao
             {
                 Console.WriteLine($"\tConta não encontrada.\nErro: {e.Message}");
             }
-            //return;
+            //forech é para cada item
         }
 
         

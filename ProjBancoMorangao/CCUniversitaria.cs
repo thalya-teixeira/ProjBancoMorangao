@@ -86,7 +86,9 @@ namespace ProjBancoMorangao
                 {
                     case 1:
                         Console.Write("\tInforme o valor do saque desejado: ");
-                        float saque = float.Parse(Console.ReadLine());
+                        float saque;
+                        while (!float.TryParse(Console.ReadLine(), out saque))
+                            Console.WriteLine("Digite somente números!");
                         if (SacarCUniver(saque))
                         {
                             AddExtrato(DadoCliente, $"SAQUE REALIZADO: {DateTime.Now} ---------- R${saque:N2}");
@@ -98,7 +100,9 @@ namespace ProjBancoMorangao
 
                     case 2:
                         Console.Write("\tInforme o valor que deseja depositar: ");
-                        float deposito = float.Parse(Console.ReadLine());
+                        float deposito;
+                        while (!float.TryParse(Console.ReadLine(), out deposito))
+                            Console.WriteLine("Digite somente números!");
 
                         try
                         {
@@ -118,7 +122,9 @@ namespace ProjBancoMorangao
                         Console.Write("\tInforme o CPF do destinatário: ");
                         string cpf = Console.ReadLine();
                         Console.Write("Informe o valor que deseja transferir: ");
-                        float transfere = float.Parse(Console.ReadLine());
+                        float transfere;
+                        while (!float.TryParse(Console.ReadLine(), out transfere))
+                            Console.WriteLine("Digite somente números!");
                         Transferir(cpf, transfere);
                         Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
                         Console.ReadKey();
@@ -127,7 +133,9 @@ namespace ProjBancoMorangao
 
                     case 4:
                         Console.Write("\tInforme o valor do boleto para pagamento: ");
-                        float pagamento = float.Parse(Console.ReadLine());
+                        float pagamento;
+                        while (!float.TryParse(Console.ReadLine(), out pagamento))
+                            Console.WriteLine("Digite somente números!");
                         RealizaPagamento(pagamento);
                         Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
                         Console.ReadKey();
