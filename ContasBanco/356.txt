@@ -1,0 +1,1 @@
+30;Conta Física;1;Thalya;16981;25/10/1997;356;1000;s;Logradouro: Humaita;Número: 430;Complemento: b;Bairro: Centro;CEP: 14800;Cidade: Araraquara;Estado: SP;Tipo de conta: Conta Normal;650;
