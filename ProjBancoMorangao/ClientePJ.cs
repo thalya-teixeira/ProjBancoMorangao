@@ -15,8 +15,6 @@ namespace ProjBancoMorangao
         //protected Pessoa Pessoa { get; set; }
         //protected Endereco endereco { get; set; }
 
-        //conta
-
         public ClientePJ()
         {
 
@@ -24,7 +22,7 @@ namespace ProjBancoMorangao
 
         public ClientePJ(int id, string agencia, string nome, string telefone, DateTime data, string razao, string cnpj, float renda)
         {
-            IdPessoa = id;
+            IDPessoa = id;
             Agencia = agencia;
             Nome = nome;
             Telefone = telefone;
@@ -36,22 +34,22 @@ namespace ProjBancoMorangao
 
         public override string ToString()
         {
-            return IdPessoa + ";Conta Jurídica;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Abertura CNPJ: " + Data.ToShortDateString() + ";Razão Social: " + RazaoSocial +
+            return IDPessoa + ";Conta Jurídica;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Abertura CNPJ: " + Data.ToShortDateString() + ";Razão Social: " + RazaoSocial +
                 ";CNPJ: " + CNPJ + ";Renda: " + Renda + ";";
         }
 
         private string DadosClientePJ()
         {
-            return $"{IdPessoa};Conta Jurídica;{Agencia};{Nome};{Telefone};{Data.ToShortDateString()};{CNPJ};{RazaoSocial};{Renda};";
+            return $"{IDPessoa};Conta Jurídica;{Agencia};{Nome};{Telefone};{Data.ToShortDateString()};{CNPJ};{RazaoSocial};{Renda};";
         }
 
 
-        public string CadastraPJ(int id)
+        public string CadastrarPJ(int id)
         {
 
             Console.WriteLine("\t°°°°°°°°°°°  SOLICITAÇÃO PESSOA JURÍDICA °°°°°°°°°°°°°");
 
-            IdPessoa = id;
+            IDPessoa = id;
 
             Console.Write("\t\nDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
             Agencia = Console.ReadLine();
@@ -79,10 +77,10 @@ namespace ProjBancoMorangao
 
         public void SolicitarAberturaPJ()
         {
-            int id = getIdPessoa();
+            int id = getID();
 
             //ClientePJ pj = new ClientePJ();
-            string cadastrapj = CadastraPJ(id);
+            string cadastrapj = CadastrarPJ(id);
 
             Endereco end = new();
             //criando uma variael que irá armazenar dentro dessa variavel o retorno

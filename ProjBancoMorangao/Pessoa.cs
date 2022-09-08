@@ -12,7 +12,7 @@ namespace ProjBancoMorangao
         public string Nome { get; set; }
         protected DateTime Data { get; set; }
         protected string Telefone { get; set; }
-        protected int IdPessoa { get; set; }
+        protected int IDPessoa { get; set; }
         public string Agencia { get; set; }
 
         public Pessoa()
@@ -21,7 +21,7 @@ namespace ProjBancoMorangao
         }
 
         //metodo para pegar o valor de ID no arquivo, pois eu já criei um arquivo do tipo txt iniciando no valor que eu quero
-        protected int getIdPessoa()
+        protected int getID()
         {
             string[] contador = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\IDPessoa\\id.txt");
             string[] num = new string[1];

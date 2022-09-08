@@ -66,7 +66,7 @@ namespace ProjBancoMorangao
             arqId.Close();
         }
 
-        public void SolicitaEmprestimo(string cpfCnpj)
+        public void SolicitarEmprestimo(string cpfCnpj)
         {
             float valorParcela;
 

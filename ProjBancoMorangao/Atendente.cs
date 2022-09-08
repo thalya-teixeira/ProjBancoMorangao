@@ -9,8 +9,6 @@ namespace ProjBancoMorangao
 {
     internal class Atendente : Funcionario
     {
-        //public string Agencia { get; set; }
-
         public Atendente()
         {
 
@@ -88,7 +86,6 @@ namespace ProjBancoMorangao
                         File.Move($"\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Solicitacao\\{solicitacoes.First()}",
                                     $"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\AguarAprov\\{solicitacoes.First()}");
                         break;
-
                 }
             }
             else

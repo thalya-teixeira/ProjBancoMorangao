@@ -14,27 +14,36 @@ namespace ProjBancoMorangao
 
         static void Menu()
         {
-            int opc;
+            string opc;
+
             do
             {
+                do
+                {
 
-                Console.WriteLine("\n\n\t°°°°°°°°°°° BEM VINDO AO BANCO DO MORANGÃO °°°°°°°°°°°");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("\t|°°°°°°°°°°°°°°°°°°°°°°  MENU  °°°°°°°°°°°°°°°°°°°°°°°°|");
-                Console.WriteLine("\t|                                                      |");
-                Console.WriteLine("\t|   opção 1 : Não sou cliente                          |");
-                Console.WriteLine("\t|   opção 2 : Já sou cliente                           |");
-                Console.WriteLine("\t|   opção 3 : Acesso a funcionários                    |");
-                Console.WriteLine("\t|                                                      |");
-                Console.WriteLine("\t|   opção 0 : Sair                                     |");
-                Console.WriteLine("\t|______________________________________________________|");
+                    Console.WriteLine("\n\n\t°°°°°°°°°°° BEM VINDO AO BANCO DO MORANGÃO °°°°°°°°°°°");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("\t|°°°°°°°°°°°°°°°°°°°°°°  MENU  °°°°°°°°°°°°°°°°°°°°°°°°|");
+                    Console.WriteLine("\t|                                                      |");
+                    Console.WriteLine("\t|   opção 1 : Não sou cliente                          |");
+                    Console.WriteLine("\t|   opção 2 : Já sou cliente                           |");
+                    Console.WriteLine("\t|   opção 3 : Acesso a funcionários                    |");
+                    Console.WriteLine("\t|                                                      |");
+                    Console.WriteLine("\t|   opção 0 : Sair                                     |");
+                    Console.WriteLine("\t|______________________________________________________|");
+                    opc = Console.ReadLine();
 
-                opc = int.Parse(Console.ReadLine());
+                    if (opc != "0" && opc != "1" && opc != "2" && opc != "3")
+                    {
+                        Console.WriteLine("\tOpção inválida!");
+                    }
+
+                } while (opc != "0" && opc != "1" && opc != "2" && opc != "3");
 
                 switch (opc)
                 {
-                    case 1:
+                    case "1":
                         char opcao;
                         Console.Write("\tDeseja se cadastrar? [S/N]: ");
                         opcao = char.Parse(Console.ReadLine().ToLower().Trim());
@@ -44,17 +53,13 @@ namespace ProjBancoMorangao
                         }
                         break;
 
-                    case 2:
-                        Console.Write("\tInforme [1] - Operações de conta [2] - Retornar ao menu: ");
-                        opc = char.Parse(Console.ReadLine());
+                    case "2":
+                        Console.WriteLine("\tOperações da conta");
+                        Conta();
                         Console.Clear();
-                        if (opc == '1')
-                        {
-                            Conta();
-                        }
                         break;
 
-                    case 3:
+                    case "3":
                         int opfunc;
                         Console.Write("\tInforme [1] - Atendente [2] - Gerente: ");
                         opfunc = int.Parse(Console.ReadLine());
@@ -66,37 +71,11 @@ namespace ProjBancoMorangao
                         Console.WriteLine("\tPressione Enter para continuar!!");
                         Console.ReadKey();
                         Console.Clear();
-                        /*
-                        if (opfunc == 1)
-                        {
-                            Atendente atendente = new Atendente();
-                            atendente.AcessoAtendente();
-                            Console.ReadKey();
-
-                            atendente.AbreConta();
-                            Console.ReadKey();
-
-                        }
-                        else if (opfunc == 2)
-                        {
-                            Gerente gerente = new Gerente();
-                            bool senha;
-                            do
-                            {
-                                Console.WriteLine("\t°°°°°°°   ACESSO ADMINISTRATIVO RESPONSÁVEL   °°°°°°°°");
-                                Console.WriteLine("\tDigite sua senha de acesso: ");
-                                int acesso = int.Parse(Console.ReadLine());
-                                senha = gerente.Autentica(acesso);
-                            } while (!senha);
-
-                            gerente.AprovaConta();
-                            Console.ReadKey();
-                        }
-                        */
+                     
                         break;
                 }
 
-            } while (opc != 0);
+            } while (opc != "0");
             Console.WriteLine("\tFIM");
         }
 
@@ -159,18 +138,28 @@ namespace ProjBancoMorangao
                 if (dados[16].Contains("Normal")) //ele vai procurar no meu arquivo se tem conta normal
                 {
                     ContaNormal conta = new ContaNormal(cpfCnpj);
-                    conta.OpCaixaEletronica();
+                    Console.WriteLine("\tPressione qualquer tecla para continuar...");
+                    Console.ReadKey();
+                    Console.Clear();
+                    conta.OperarCaixaEletro();
+
                 }
                 else if (dados[16].Contains("VIP"))
                 {
                     ContaVIP conta = new ContaVIP(cpfCnpj);
-                    conta.OpCaixaEletronica();
+                    Console.WriteLine("\tPressione qualquer tecla para continuar...");
+                    Console.ReadKey();
+                    Console.Clear();
+                    conta.OperarCaixaEletro();
                 }
                 else if (dados[16].Contains("Universitária"))
                 {
                     CCUniversitaria conta = new CCUniversitaria(cpfCnpj);
-                    conta.OpCaixaEletronica();
-                    
+                    Console.WriteLine("\tPressione qualquer tecla para continuar...");
+                    Console.ReadKey();
+                    Console.Clear();
+                    conta.OperarCaixaEletro();
+
                 }
             }
             catch (Exception e)
@@ -180,7 +169,7 @@ namespace ProjBancoMorangao
             //forech é para cada item
         }
 
-        
+
     }
 }
 

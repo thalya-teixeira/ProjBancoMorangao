@@ -15,7 +15,7 @@ namespace ProjBancoMorangao
         protected string CEP { get; set; }
         protected string Cidade { get; set; }
         protected string Estado { get; set; }
-        protected int IdPessoa { get; set; }
+        protected int IDPessoa { get; set; }
 
         public Endereco()
         {
@@ -47,7 +47,7 @@ namespace ProjBancoMorangao
         //cadastrar endereço dos clientes
         public string CadastrarEndereco(int idPessoa)
         {
-            IdPessoa = idPessoa;
+            IDPessoa = idPessoa;
             Console.Write("\tInforme o seu logradouro(rua): ");
             Logradouro = Console.ReadLine();
 

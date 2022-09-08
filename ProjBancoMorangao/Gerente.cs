@@ -24,7 +24,7 @@ namespace ProjBancoMorangao
                 return false;
         }
 
-        public void AprovaConta()
+        public void AprovarConta()
         {
             //verifica a quantidade de solicitações dentro da pasta
             List<string> solicitacoes = new List<string>();
@@ -88,7 +88,7 @@ namespace ProjBancoMorangao
             }
         }
 
-        public void AprovaEmprestimo()
+        public void AprovarEmprestimo()
         {
             //verifica a quantidade de solicitações
             List<string> solicitacoes = new List<string>();

@@ -68,7 +68,7 @@ namespace ProjBancoMorangao
         }
 
         //método para realizar pagamentos
-        public void RealizaPagamento(float valor)
+        public void RealizarPagamento(float valor)
         {
             if (SacarCNorm(valor))
             {
@@ -76,7 +76,7 @@ namespace ProjBancoMorangao
             }
         }
 
-        public void OpCaixaEletronica()
+        public void OperarCaixaEletro()
         {
             int operacao;
             do
@@ -130,7 +130,7 @@ namespace ProjBancoMorangao
                         float pagamento;
                         while (!float.TryParse(Console.ReadLine(), out pagamento))
                             Console.WriteLine("Digite somente números!");
-                        RealizaPagamento(pagamento);
+                        RealizarPagamento(pagamento);
                         Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
                         Console.ReadKey();
                         Console.Clear();
@@ -144,7 +144,7 @@ namespace ProjBancoMorangao
                         break;
 
                     case 6:
-                        SolicitaEmprestimo(DadoCliente);
+                        SolicitarEmprestimo(DadoCliente);
                         Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
                         Console.ReadKey();
                         Console.Clear();

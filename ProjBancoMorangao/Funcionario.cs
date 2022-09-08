@@ -8,7 +8,6 @@ namespace ProjBancoMorangao
 {
     internal class Funcionario : Pessoa
     {
-        //protected Pessoa Pessoa { get; set; }
         public string Cargo { get; set; }
         
         public Funcionario()

@@ -9,7 +9,6 @@ namespace ProjBancoMorangao
     internal class Agencia 
     {
         public string NumAgencia { get; set; }
-        public Endereco Endereco { get; set; }
         public Atendente Atendente { get; set; }
         public Gerente Gerente { get; set; }
 
@@ -40,11 +39,11 @@ namespace ProjBancoMorangao
                         string opcao = Console.ReadLine();
                         if(opcao == "1")
                         {
-                            Gerente.AprovaConta();
+                            Gerente.AprovarConta();
                         }
                         else
                         {
-                            Gerente.AprovaEmprestimo();
+                            Gerente.AprovarEmprestimo();
                         }
                     }
                 }
@@ -73,11 +72,11 @@ namespace ProjBancoMorangao
                         string opcao = Console.ReadLine();
                         if (opcao == "1")
                         {
-                            Gerente.AprovaConta();
+                            Gerente.AprovarConta();
                         }
                         else
                         {
-                            Gerente.AprovaEmprestimo();
+                            Gerente.AprovarEmprestimo();
                         }
                     }
                 }
@@ -106,11 +105,11 @@ namespace ProjBancoMorangao
                         string opcao = Console.ReadLine();
                         if (opcao == "1")
                         {
-                            Gerente.AprovaConta();
+                            Gerente.AprovarConta();
                         }
                         else
                         {
-                            Gerente.AprovaEmprestimo();
+                            Gerente.AprovarEmprestimo();
                         }
                     }
                 }

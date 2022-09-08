@@ -74,7 +74,7 @@ namespace ProjBancoMorangao
                 AddExtrato(DadoCliente, $"PAGAMENTO DE CONTA: {DateTime.Now} ---------- R${valor:N2}");
         }
 
-        public void OpCaixaEletronica()
+        public void OperarCaixaEletro()
         {
             int operacao;
             do
@@ -147,7 +147,7 @@ namespace ProjBancoMorangao
                         break;
 
                     case 6:
-                        SolicitaEmprestimo(DadoCliente);
+                        SolicitarEmprestimo(DadoCliente);
                         Console.WriteLine("\n\tPressione qualquer tecla para continuar...");
                         Console.ReadKey();
                         Console.Clear();

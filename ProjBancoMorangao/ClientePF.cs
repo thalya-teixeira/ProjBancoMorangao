@@ -23,7 +23,7 @@ namespace ProjBancoMorangao
 
         public ClientePF(int id, string nome, string agencia, string telefone, DateTime data, string cpf, float renda, string estudante)
         {
-            IdPessoa = id;
+            IDPessoa = id;
             Agencia = agencia;
             Nome = nome;
             Telefone = telefone;
@@ -35,13 +35,13 @@ namespace ProjBancoMorangao
 
         public override string ToString()
         {
-            return IdPessoa + ";Conta Física;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Nascimento: " + Data.ToShortDateString() + ";CPF: " + CPF +
+            return IDPessoa + ";Conta Física;Agência: " + Agencia + ";Nome: " + Nome + ";Telefone: " + Telefone + ";Data de Nascimento: " + Data.ToShortDateString() + ";CPF: " + CPF +
                  ";Renda: R$" + Renda + ";Estudante: " + Estudante + ";";
         }
 
         private string DadosClientePF()
         {
-            return $"{IdPessoa};Conta Física;{Agencia};{Nome};{Telefone};{Data.ToShortDateString()};{CPF};{Renda};{Estudante};";
+            return $"{IDPessoa};Conta Física;{Agencia};{Nome};{Telefone};{Data.ToShortDateString()};{CPF};{Renda};{Estudante};";
         }
 
         public string CadastrarPF(int id)
@@ -49,7 +49,7 @@ namespace ProjBancoMorangao
 
             Console.WriteLine("\t°°°°°°°°°°°°  SOLICITAÇÃO PESSOA FISÍCA  °°°°°°°°°°°°°°°");
 
-            IdPessoa = id;
+            IDPessoa = id;
 
             Console.Write("\n\tDigite o Número da agência [1-Zona Norte / 2-Zona Leste / 3-Zona Sul]: ");
             Agencia = Console.ReadLine();
@@ -85,7 +85,7 @@ namespace ProjBancoMorangao
         public void SolicitarAberturaPF()
         {
 
-            int id = getIdPessoa();
+            int id = getID();
 
             string cadastrapf = CadastrarPF(id);
 
