@@ -8,7 +8,7 @@ As agências possuem caixas eletrônicos, através dos quais os clientes podem r
 - Solicitar abertura de contas;
 - Solicitar empréstimo;
 
-Após o cliente tiver feito a solicitação de abertura de conta, o atendente irá realizar a abertura e enviar ao gerente para aprovação do tipo de conta. Todos os clientes possuem conta corrente e ainda poderão optar por 3 tipos de contas:
+Após o cliente tiver feito a solicitação de abertura de conta, o atendente irá realizar a abertura e o gerente irá fazer a aprovação do tipo de conta. Todos os clientes possuem conta corrente e ainda poderão escolher por 3 tipos de contas:
 
 - Normal;
 - Universitária;
