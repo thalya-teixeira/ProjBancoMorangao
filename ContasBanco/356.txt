@@ -1,1 +1,0 @@
-29;Conta Jurídica;3;Thalya;1698100;25/10/1997;356;Thalya;1212;Logradouro: rua benedito storani;Número: 755;Complemento: 0;Bairro: centro;CEP: 14800;Cidade: araraq;Estado: sp;Tipo de conta: Conta VIP;-300;
