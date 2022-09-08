@@ -1,7 +1,8 @@
 <h1> 🍓🍓🍓 Bem vindos ao Banco do Morangão! 🍓🍓🍓
 </h1>
 
-O Banco do Morangão possui diversas agências. As agências possuem caixas eletrônicos, através dos quais os clientes podem realizar algumas operações básicas como:
+O Banco do Morangão possui 3 agências. Cada agência é composta por 1 atendente e 1 gerente. <br>
+As agências possuem caixas eletrônicos, através dos quais os clientes podem realizar algumas operações básicas como:
 
 - Solicitar abertura de conta;
 - Solicitar abertura de contas;
