@@ -23,3 +23,4 @@ Dentre as funções operadas pelo caixa eletrônico, também é possível realiz
 - Solicitar Empréstimo;
 
 
+<h6>Na classe gerente contém senha do gerente</h6>
