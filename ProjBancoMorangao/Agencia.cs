@@ -11,6 +11,7 @@ namespace ProjBancoMorangao
         public string NumAgencia { get; set; }
         public Atendente Atendente { get; set; }
         public Gerente Gerente { get; set; }
+        public Endereco Endereco { get; set; }
 
         public Agencia(string numAgencia, int funcionario)
         {

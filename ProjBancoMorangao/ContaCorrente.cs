@@ -138,7 +138,7 @@ namespace ProjBancoMorangao
         {
             try
             {
-                string[] conta = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\Extrato\\{cpfCnpj}.txt");
+                string[] conta = System.IO.File.ReadAllLines($"C:\\Users\\Thalya\\source\\repos\\ProjBancoMorangao\\ContasBanco\\{cpfCnpj}.txt");
                 string[] dados = new string[18];
                 foreach (string dado in conta)
                     dados = dado.Split(';');
@@ -158,7 +158,7 @@ namespace ProjBancoMorangao
                 }
                 Console.WriteLine("----------------------------------------------------------------------------");
                 Console.WriteLine("                                                                            ");
-                Console.WriteLine($"SALDO ATUAL DA CONTA: R${Saldo:N2}                                         ");
+                Console.WriteLine($"SALDO ATUAL DA CONTA: R${dados[17]:N2}                                         ");
                 Console.WriteLine($"                                                                           ");
                 Console.WriteLine("____________________________________________________________________________");
 
